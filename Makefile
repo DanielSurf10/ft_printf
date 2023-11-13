@@ -6,43 +6,46 @@
 #    By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:22:53 by danbarbo          #+#    #+#              #
-#    Updated: 2023/11/10 19:36:57 by danbarbo         ###   ########.fr        #
+#    Updated: 2023/11/13 20:23:15 by danbarbo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libftprintf.a
 CC			= cc
 FLAGS		= -Wall -Wextra -Werror -c
-INCLUDE		= .
-DEPENCIES	= libft
+INCLUDE		= include
 
-SRC			= ${wildcard *.c}
-SRC_DEPEND	= libft/libft.a
-OBJ			= ${SRC:%.c=%.o}
+SRC			= ${addprefix src/, \
+				ft_printf.c \
+				print_char.c \
+				print_hex_nbr.c \
+				print_nbr.c \
+				print_str.c \
+				print_unsig_nbr.c \
+				}
+OBJ			= ${SRC:src/%.c=obj/%.o}
 
-all: ${NAME}
 all: ${NAME}
 ${NAME}: ${OBJ}
+	ar rcs ${NAME} ${OBJ}
 
-${DEPENCIES}:
-	make -C $@
-
-%.o: %.c
-	${CC} ${FLAGS} -I ${INCLUDE} ${SRC_DEPEND} $< -o $@
-	ar rcs ${NAME} $@
+obj/%.o: src/%.c
+# @mkdir -p obj
+	$(shell if [ ! -d obj ]; then mkdir -p obj; fi)
+	${CC} ${FLAGS} -I ${INCLUDE} $< -o $@
 
 clean:
-	# for dep in $(DEPENCIES); do \
-	# 	$(MAKE) -C $$dep clean; \
-	# done
-	rm -f *.o
+	rm -rf obj
 
 fclean: clean
-	# for dep in $(DEPENCIES); do \
-	# 	$(MAKE) -C $$dep fclean; \
-	# done
 	rm -f ${NAME}
+
+# makedir:
+# # $(shell if [ -d obj/ ])
+# ifeq (${wildcard obj}, )
+# 	mkdir -p obj
+# endif
 
 re: fclean all
 
-.PHONY: all libft clean fclean re
+.PHONY: all libft clean fclean re makedir

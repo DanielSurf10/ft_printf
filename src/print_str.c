@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_unsig_nbr.c                                  :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 19:21:56 by danbarbo          #+#    #+#             */
-/*   Updated: 2023/11/13 14:10:38 by danbarbo         ###   ########.fr       */
+/*   Created: 2023/11/10 15:49:02 by danbarbo          #+#    #+#             */
+/*   Updated: 2023/11/13 16:56:55 by danbarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_unsig_nbr(unsigned int nbr)
+static int	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+		i++;
+	return (i);
+}
+
+int	print_str(char *str)
 {
 	int	count;
 
-	count = 0;
-	if (nbr < 10)
-		count += print_nbr(nbr);
-	else
-	{
-		count += print_unsig_nbr(nbr / 10);
-		count += print_unsig_nbr(nbr % 10);
-	}
+	count = ft_strlen(str);
+	write(1, str, count);
 	return (count);
 }
