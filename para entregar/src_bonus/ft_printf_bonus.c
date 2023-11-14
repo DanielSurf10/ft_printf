@@ -6,7 +6,7 @@
 /*   By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:09:11 by danbarbo          #+#    #+#             */
-/*   Updated: 2023/11/14 14:10:03 by danbarbo         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:44:16 by danbarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int	ft_printf(const char *str, ...)
 
 	i = 0;
 	count = 0;
+	if (!str)
+		return (-1);
 	va_start(args, str);
 	while (str[i])
 	{

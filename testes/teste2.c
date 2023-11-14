@@ -6,7 +6,7 @@
 /*   By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:26:22 by danbarbo          #+#    #+#             */
-/*   Updated: 2023/11/14 14:50:29 by danbarbo         ###   ########.fr       */
+/*   Updated: 2023/11/14 17:43:28 by danbarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	main()
 	int		ret;
 	int		ret_p;
 
-	ret = ft_printf(" % d \n", 0);
-	ret_p = printf(" % d \n", 0);
+	ret = ft_printf(NULL);
+	ret_p = printf(NULL);
 	printf("%i %i\n", ret, ret_p);
 
 
