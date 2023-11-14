@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teste2.c                                           :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 15:26:22 by danbarbo          #+#    #+#             */
-/*   Updated: 2023/11/14 14:50:29 by danbarbo         ###   ########.fr       */
+/*   Created: 2023/11/10 15:49:02 by danbarbo          #+#    #+#             */
+/*   Updated: 2023/11/14 13:35:24 by danbarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
+#include "ft_printf_bonus.h"
 
-int	main()
+static int	ft_strlen(const char *str)
 {
-	int		ret;
-	int		ret_p;
+	size_t	i;
 
-	ret = ft_printf(" % d \n", 0);
-	ret_p = printf(" % d \n", 0);
-	printf("%i %i\n", ret, ret_p);
+	i = 0;
+	while (str && str[i] != '\0')
+		i++;
+	return (i);
+}
 
+int	print_str(char *str)
+{
+	int	count;
 
-	return (0);
+	if (str)
+		count = write(1, str, ft_strlen(str));
+	else
+		count = write(1, "(null)", 6);
+	return (count);
 }

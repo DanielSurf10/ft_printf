@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teste2.c                                           :+:      :+:    :+:   */
+/*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 15:26:22 by danbarbo          #+#    #+#             */
-/*   Updated: 2023/11/14 14:50:29 by danbarbo         ###   ########.fr       */
+/*   Created: 2023/11/13 20:29:25 by danbarbo          #+#    #+#             */
+/*   Updated: 2023/11/13 20:41:47 by danbarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
 
-int	main()
+int	print_pointer(unsigned long nbr)
 {
-	int		ret;
-	int		ret_p;
+	int	counter;
 
-	ret = ft_printf(" % d \n", 0);
-	ret_p = printf(" % d \n", 0);
-	printf("%i %i\n", ret, ret_p);
-
-
-	return (0);
+	if (nbr == 0)
+		counter = write(1, "(nil)", 5);
+	else
+		counter = print_hex_nbr(nbr, 0, 1);
+	return (counter);
 }

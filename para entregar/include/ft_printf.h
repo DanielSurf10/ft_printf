@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teste2.c                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 15:26:22 by danbarbo          #+#    #+#             */
-/*   Updated: 2023/11/14 14:50:29 by danbarbo         ###   ########.fr       */
+/*   Created: 2023/11/09 16:11:33 by danbarbo          #+#    #+#             */
+/*   Updated: 2023/11/13 20:33:18 by danbarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	main()
-{
-	int		ret;
-	int		ret_p;
+# include <unistd.h>
+# include <stdarg.h>
 
-	ret = ft_printf(" % d \n", 0);
-	ret_p = printf(" % d \n", 0);
-	printf("%i %i\n", ret, ret_p);
+int	ft_printf(const char *str, ...);
 
+int	print_char(char c);
+int	print_str(char *str);
+int	print_nbr(int nbr, char flag);
+int	print_unsig_nbr(unsigned int nbr);
+int	print_hex_nbr(unsigned long nbr, int is_upper, int has_hashtag);
+int	print_pointer(unsigned long nbr);
 
-	return (0);
-}
+#endif

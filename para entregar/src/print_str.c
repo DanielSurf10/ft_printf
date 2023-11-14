@@ -1,49 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_nbr.c                                        :+:      :+:    :+:   */
+/*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 15:57:07 by danbarbo          #+#    #+#             */
-/*   Updated: 2023/11/14 14:53:20 by danbarbo         ###   ########.fr       */
+/*   Created: 2023/11/10 15:49:02 by danbarbo          #+#    #+#             */
+/*   Updated: 2023/11/13 20:33:50 by danbarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	print(int nbr)
+static int	ft_strlen(const char *str)
 {
-	int	count;
+	size_t	i;
 
-	count = 0;
-	if (nbr == -2147483648)
-	{
-		count = print_str("-2147483648");
-		return (count);
-	}
-	if (nbr < 0)
-	{
-		count += print_char('-');
-		nbr = -nbr;
-	}
-	if (nbr < 10)
-		count += print_char(nbr + '0');
-	else
-	{
-		count += print(nbr / 10);
-		count += print(nbr % 10);
-	}
-	return (count);
+	i = 0;
+	while (str && str[i] != '\0')
+		i++;
+	return (i);
 }
 
-int	print_nbr(int nbr, char flag)
+int	print_str(char *str)
 {
 	int	count;
 
-	count = 0;
-	if (flag != '%' && nbr >= 0)
-		count += print_char(flag);
-	count += print(nbr);
+	if (str)
+		count = write(1, str, ft_strlen(str));
+	else
+		count = write(1, "(null)", 6);
 	return (count);
 }
