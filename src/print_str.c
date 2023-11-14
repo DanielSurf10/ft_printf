@@ -6,7 +6,7 @@
 /*   By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:49:02 by danbarbo          #+#    #+#             */
-/*   Updated: 2023/11/13 16:56:55 by danbarbo         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:33:50 by danbarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	print_str(char *str)
 {
 	int	count;
 
-	count = ft_strlen(str);
-	write(1, str, count);
+	if (str)
+		count = write(1, str, ft_strlen(str));
+	else
+		count = write(1, "(null)", 6);
 	return (count);
 }

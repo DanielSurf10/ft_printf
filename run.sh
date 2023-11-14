@@ -1,1 +1,1 @@
-cc -Wall -Werror -Wextra -I include/ srcs/*.c libft/libft.a $1 && ./a.out
+cc -Wall -Werror -Wextra -I include/ src/*.c libft/libft.a $1 && ./a.out

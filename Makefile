@@ -6,7 +6,7 @@
 #    By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 16:22:53 by danbarbo          #+#    #+#              #
-#    Updated: 2023/11/13 20:23:15 by danbarbo         ###   ########.fr        #
+#    Updated: 2023/11/13 20:38:16 by danbarbo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC			= ${addprefix src/, \
 				print_nbr.c \
 				print_str.c \
 				print_unsig_nbr.c \
+				print_pointer.c \
 				}
 OBJ			= ${SRC:src/%.c=obj/%.o}
 

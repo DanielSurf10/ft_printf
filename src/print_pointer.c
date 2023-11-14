@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danbarbo <danbarbo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:11:33 by danbarbo          #+#    #+#             */
-/*   Updated: 2023/11/13 20:33:18 by danbarbo         ###   ########.fr       */
+/*   Created: 2023/11/13 20:29:25 by danbarbo          #+#    #+#             */
+/*   Updated: 2023/11/13 20:41:47 by danbarbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
+int	print_pointer(unsigned long nbr)
+{
+	int	counter;
 
-int	ft_printf(const char *str, ...);
-
-int	print_char(char c);
-int	print_str(char *str);
-int	print_nbr(int nbr, char flag);
-int	print_unsig_nbr(unsigned int nbr);
-int	print_hex_nbr(unsigned long nbr, int is_upper, int has_hashtag);
-int	print_pointer(unsigned long nbr);
-
-#endif
+	if (nbr == 0)
+		counter = write(1, "(nil)", 5);
+	else
+		counter = print_hex_nbr(nbr, 0, 1);
+	return (counter);
+}
